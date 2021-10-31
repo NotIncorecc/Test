@@ -72,11 +72,6 @@ client.on('message', message =>{
     if (command === 'send') {
         client.allcommands.get('send').execute(message, args);
     }
-    if (command === 'gtn') {
-        client.allcommands.get('gtn').execute(message).catch(err => {
-        console.error(err);
-        });
-    }
 });
 
 client.on("message", async (message) => {
