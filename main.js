@@ -6,11 +6,17 @@ const prefix = '&';
  
 const fs = require('fs');
 
+var names = [];
+var desc = [];
+
 client.allcommands = new Discord.Collection();// all my commands are here
 let find_from_allcomm = function(coll_name) {
     const thecommandFiles = fs.readdirSync('./commands/'+coll_name+'/').filter(file => file.endsWith('.js'))
     for(const file of thecommandFiles){
-        const command = require('./commands/'+coll_name+'/'+file);
+        const oye = './commands/'+coll_name+'/'+file;
+        const command = require(oye);
+        names.push(command.name);
+        desc.push(command.description);
         client.allcommands.set(command.name, command);
     }
 }
@@ -37,7 +43,7 @@ client.on('message', message =>{
         client.allcommands.get('ping').execute(message, args);
     };
     if (command === "help") {
-        client.allcommands.get('help').execute(message, args, Discord);
+        client.allcommands.get('help').execute(message, args, Discord, names, desc);
     };
     if(command === "whois" ){
         client.allcommands.get('whois').execute(message, args, Discord);
