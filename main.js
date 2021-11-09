@@ -61,10 +61,7 @@ client.on('message', message =>{
         client.allcommands.get('kill').execute(message, args);
     };
     if(command === "play"){
-        client.allcommands.get('play').execute(message, args);
-    };
-    if (command === 'leave') {
-        client.allcommands.get('leave').execute(message, args);
+        client.allcommands.get('play').execute(message, args, command);
     };
     if (command === 'akinator') {
         client.allcommands.get('akinator').execute(message, client);
