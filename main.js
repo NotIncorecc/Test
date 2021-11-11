@@ -41,40 +41,43 @@ client.on('message', message =>{
  
     if(command === 'ping'){
         client.allcommands.get('ping').execute(message, args);
-    };
-    if (command === "help") {
+    }
+    else if (command === "help") {
         client.allcommands.get('help').execute(message, args, Discord, names, desc);
-    };
-    if(command === "whois" ){
+    }
+    else if(command === "whois" ){
         client.allcommands.get('whois').execute(message, args, Discord);
-    };
-    if (command === 'kick') {
+    }
+    else if (command === 'kick') {
         client.allcommands.get('kick').execute(message, args, Discord);
-    };
-    if(command === "purge"){
+    }
+    else if(command === "purge"){
         client.allcommands.get('purge').execute(message, args);
-    };
-    if(command === "ban"){
+    }
+    else if(command === "ban"){
         client.allcommands.get('ban').execute(message, args);
-    };
-    if (command === 'kill') {
+    }
+    else if (command === 'kill') {
         client.allcommands.get('kill').execute(message, args);
-    };
-    if(command === "play"||'skip'||'stop'){
+    }
+    else if(command === "play"||command==='skip'||command==='stop'){
         client.allcommands.get('play').execute(message, args, command);
-    };
-    if (command === 'akinator') {
+    }
+    else if (command === 'akinator') {
         client.allcommands.get('akinator').execute(message, client);
-    };
-    if (command === 'hack') {
+    }
+    else if (command === 'hack') {
         client.allcommands.get('hack').execute(message, client);
     }
-    if (command === 'del') {
+    else if (command === 'del') {
         client.allcommands.get('del').execute(message, args);
     }
-    if (command === 'send') {
+    else if (command === 'send') {
         client.allcommands.get('send').execute(message, args);
     }
+    else if(command === 'sorn'){
+        client.allcommands.get('speakornot').execute(message, args);
+    };
 });
 
 client.on("message", async (message) => {
