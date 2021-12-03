@@ -69,9 +69,6 @@ client.on('message', message =>{
     else if (command === 'hack') {
         client.allcommands.get('hack').execute(message, client);
     }
-    else if (command === 'del') {
-        client.allcommands.get('del').execute(message, args);
-    }
     else if (command === 'send') {
         client.allcommands.get('send').execute(message, args);
     }
