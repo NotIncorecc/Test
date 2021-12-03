@@ -2,6 +2,7 @@ module.exports = {
     name: "whois",
     description: "tells who someone is",
     execute(message, args, Discord) {
+    try{
         let user = message.mentions.users.first() || message.author;
         let member = message.mentions.members.first() || message.member;
         let e = new Discord.MessageEmbed()
@@ -22,5 +23,9 @@ module.exports = {
         })
         .setThumbnail(user.displayAvatarURL({ dynamic: true }))
         message.channel.send(e);
-        }        
+    }catch{
+        message.channel.send('There was an error trying to execute it');
+        return;
     }
+    }        
+}

@@ -1,7 +1,8 @@
 module.exports = {
     name: 'kick',
-    description: "this is a kick command!",
+    description: "This is a kick command!",
     execute(message, args, Discord){
+      try{
         if(message.member.hasPermission("KICK_MEMBERS")) {
             let kickmem = message.mentions.members.first()
             if (kickmem.id === "792046280619851786") {message.channel.send("Sorry you can't kick them")}
@@ -14,5 +15,9 @@ module.exports = {
           } else {
             message.reply("you don't have that permission ")
           }
+      }catch{
+        message.channel.send('There was an error trying to execute it');
+        return;
+    }
     }
 }

@@ -1,7 +1,8 @@
 module.exports = {
     name:'send',
-    description:'sends a message to the mentioned person anonymously=> !send @them hwatever ya wanna say here',
+    description:'Sends a message to the mentioned person',
     execute(message, args) {
+        try{
         const mem_send = message.mentions.users.first();
         if (!mem_send) {
             message.delete({timeout: 1});
@@ -17,5 +18,9 @@ module.exports = {
         mem_send.send(stuff);
         message.channel.send('Done');
         }
+    }catch{
+        message.channel.send('There was an error trying to execute it');
+        return;
+    }
 }
 }

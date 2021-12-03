@@ -1,7 +1,8 @@
 module.exports = {
     name: 'purge',
-    description: "this is a purge command!",
+    description: "This is a purge command!",
     execute(message, args){
+    try {
         let arg = message.content.split(" ")
         if(message.member.hasPermission("MANAGE_MESSAGES")) {
         let clear = arg[1];
@@ -18,5 +19,9 @@ module.exports = {
         message.delete({timeout: 10000})
         )}
         else{message.reply("You dont have perms!")}
+    }catch{
+        message.channel.send('There was an error trying to execute it');
+        return;
+    }
     }
 }

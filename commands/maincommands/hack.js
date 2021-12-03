@@ -1,7 +1,8 @@
 module.exports = {
     name: 'hack',
-    description: 'hacks',
+    description: 'Hacks the mentioned user',
     async execute(message, args) {
+        try{
         const user = message.mentions.users.first();
         if(!user) return message.channel.send("Mention Someone to hack")
         message.channel.send("**[25%]** Finding IP..").then(m => {
@@ -21,5 +22,9 @@ module.exports = {
             });
             }, 5000);
             });
+        }catch{
+            message.channel.send('There was an error trying to execute it');
+            return;
+        }
     }
 }
