@@ -1,7 +1,8 @@
 module.exports = {
     name:'serverinfo',
-    description:'server info command',
+    description:'Info about the server',
     async execute(message, args, Discord) {
+        try{
         let embed = new Discord.MessageEmbed()
         .setColor("RANDOM")
         .setAuthor(`Info for ${message.guild}`, message.guild.iconURL({ dynamic: true }))
@@ -15,6 +16,9 @@ module.exports = {
         .setThumbnail(message.guild.iconURL({ dynamic: true }))
         .setFooter(`ID: ${message.guild.id}, Created • ${message.guild.createdAt.toDateString()}`)
 
-        message.channel.send(embed)
+        message.channel.send(embed)}catch(err){
+            message.channel.send('there was an error please try again',err);
+            return;
+        }
     }
 }

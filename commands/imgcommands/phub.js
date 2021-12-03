@@ -1,7 +1,8 @@
 module.exports = {
     name: 'phub',
-    description: "the comment section",
+    description: "The comment section",
     async execute(message, args, canvacord, Discord){
+      try{
         const pers = message.mentions.users.first();
         if (pers.id === "792046280619851786") {message.channel.send("Sorry I can not make fun of them")}
         else {
@@ -16,6 +17,9 @@ module.exports = {
            });
           let attachment = new Discord.MessageAttachment(pimg, "phub.png");
           return message.channel.send(attachment);
-         }}   
+         }}}catch(err){
+          message.channel.send('there was an error please try again',err);
+          return;
+      }
     }
 }

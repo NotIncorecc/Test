@@ -2,8 +2,9 @@ const Canvas = require('canvas')
 
 module.exports = {
     name:'coffin',
-    description: 'this is a coffin dance meme',
+    description: 'Puts the mentioned user in a coffin',
     async execute(message, args, Discord) {
+        try{
         let cofpers = message.mentions.users.first() || message.author; 
         if (cofpers.id === "792046280619851786") {return message.channel.send("Oops. I can't do that")
     }   else {
@@ -22,6 +23,10 @@ module.exports = {
 
         const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'cofmeme.png');
         return message.channel.send(attachment);
+    }
+    }catch(err){
+        message.channel.send('there was an error please try again',err);
+        return;
     }
     }
 }
